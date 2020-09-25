@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <style>
+
+      * {
+        font-family: Inter Black;
+      }
+
+      .hide {
+        display: none;
+      }
+
+      /* body {
+        padding: 0;
+        margin: 0;
+        display: flex;
+        width: 100vw;
+        height: 100vh;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+      } */
+
+      button {
+        padding: 20px;
+        padding-left: 60px;
+        padding-right: 60px;
+        font-size: 20px;
+        margin-right: 10px;
+        background-color: Black;
+        color: white;
+      }
+
+      .QTitle {
+        font-size: 60px;
+        margin-bottom: 100px;
+        color: Black;
+      }
+
+      .QText {
+        font-size: 30px;
+        font-family: Inter;
+        line-height: 1.5;
+        margin-bottom: 50px;
+        align-self: left;
+        color: Black;
+      }
+
+      .QuestionContainer {
+        border-style: solid;
+        border-radius: 10px;
+        padding: 20px;
+      }
+
+      .scoreCard {
+        padding: 20px;
+      }
+
+      .ScoreHeading {
+        font-family: Inter;
+        font-size: 80px;
+        padding: 0px;
+        margin-bottom: 100px;
+        color: Black;
+      }
+
+      .scoreEx {
+        font-family: Inter;
+        font-size: 40px;
+        color: Black;
+        line-height: 1.5;
+      }
+
+      .ScoreNumber {
+        font-size: 80px;
+        margin-bottom: 100px;
+        color: Black;
+      }
+
+    </style>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+
+    <div id="scoreCard" class="scoreCard hide">
+      <h1 id="scoreTitle" class="ScoreHeading">
+        Your Score:
+      </h1>
+      <p id="score" class="ScoreNumber"></p>
+
+      <!-- The explanation of the score goes below here -->
+      <p id="Explanation" class="scoreEx"></p>
+    </div>
+
+    <!-- Question 1 -->
+    <div id="q1Container" class="QuestionContainer">
+      <h1 id="QuestionTitle" class="QTitle">Question 1</h1>
+      <p id="QuestionText" class="QText">
+
+        Have your buyers (distributors, foodservice or sales, or direct to customers) had two or more complaints about the same product you manufacture from the same lot/batch/production date  (many being posted on social media about your product if your buyer does not track) that might include illness (e.g.,  “made me sick” or “tasted spoiled/old”), allergy (e.g., “didn’t know your product had sesame seeds in it”) or injury (e.g., “bit into the sandwich and found a piece of metal” )?
+
+      </p>
+      <button id="Question1YES" type="button">Yes</button>
+      <button id="Question1NO" type="button">No</button>
+    </div>
+
+    <!-- Question 2 -->
+    <div id="q2Container" class="QuestionContainer hide">
+      <h1 id="QuestionTitle" class="QTitle">Question 2</h1>
+      <p id="QuestionText" class="QText">
+
+        Have you had any FDA Warning Letters (Form 483) in the last 12 months from any facility you manufacture human food in (e.g., presence of Listeria monocytogenes in the manufacturing environment or unsanitary conditions cited)?
+
+      </p>
+      <button id="Question2YES" type="button">Yes</button>
+      <button id="Question2NO" type="button">No</button>
+    </div>
+
+    <!-- Question 3 -->
+    <div id="q3Container" class="QuestionContainer hide">
+      <h1 id="QuestionTitle" class="QTitle">Question 3</h1>
+      <p id="QuestionText" class="QText">
+
+        Do you have a Food Safety Plan (according to the FSMA Preventive Controls Rule) prepared by a Preventive Controls Qualified Individual (PCQI) for every product you manufacture in every facility?
+
+      </p>
+      <button id="Question3YES" type="button">Yes</button>
+      <button id="Question3NO" type="button">No</button>
+    </div>
+
+    <!-- Question 4 -->
+    <div id="q4Container" class="QuestionContainer hide">
+      <h1 id="QuestionTitle" class="QTitle">Question 4</h1>
+      <p id="QuestionText" class="QText">
+
+        Have you had more than one product recall or withdrawal that was initiated by your buyer (distributor, foodservice or sales) based on a food safety issue (e.g., label did not state allergen present in product)?
+
+      </p>
+      <button id="Question4YES" type="button">Yes</button>
+      <button id="Question4NO" type="button">No</button>
+    </div>
+
+    <!-- Question 5 -->
+    <div id="q5Container" class="QuestionContainer hide">
+      <h1 id="QuestionTitle" class="QTitle">Question 5</h1>
+      <p id="QuestionText" class="QText">
+
+        Are you confident that you are properly screening and excluding sick employees with COVID19 in your facilities,  and not allowing them to return to work until they are no longer sick (i.e., not scheduled to work before they are non-infectious) according to CDC and FDA guidelines?
+
+      </p>
+      <button id="Question5YES" type="button">Yes</button>
+      <button id="Question5NO" type="button">No</button>
+    </div>
+
+
+    <script>
+      //Initial Score
+      var score = 100;
+      document.getElementById("score").innerHTML = score;
+
+      //Question Weights
+      var question1Weight = 30;
+      var question2Weight = 30;
+      var question3Weight = 10;
+      var question4Weight = 20;
+      var question5Weight = 10;
+
+
+      //Functions that change score based on each NO answer
+      //Yes answers will just go to next question
+    document.getElementById("Question1NO").onclick = function() {
+      //correct answer
+      document.getElementById("q1Container").setAttribute("style", "display:none;");
+      document.getElementById("q2Container").setAttribute("style", "display:block;");
+    };
+
+    document.getElementById("Question1YES").onclick = function() {
+      score-=question1Weight;
+      document.getElementById("q1Container").setAttribute("style", "display:none;");
+      document.getElementById("q2Container").setAttribute("style", "display:block;");
+      document.getElementById("score").innerHTML = score;
+    };
+
+    document.getElementById("Question2NO").onclick = function() {
+      //correct answer
+      document.getElementById("q2Container").setAttribute("style", "display:none;");
+      document.getElementById("q3Container").setAttribute("style", "display:block;");
+    };
+
+    document.getElementById("Question2YES").onclick = function() {
+      score-=question2Weight;
+      document.getElementById("q2Container").setAttribute("style", "display:none;");
+      document.getElementById("q3Container").setAttribute("style", "display:block;");
+      document.getElementById("score").innerHTML = score;
+    };
+
+    document.getElementById("Question3NO").onclick = function() {
+      score-=question3Weight;
+      document.getElementById("q3Container").setAttribute("style", "display:none;");
+      document.getElementById("q4Container").setAttribute("style", "display:block;");
+      document.getElementById("score").innerHTML = score;
+    };
+
+    document.getElementById("Question3YES").onclick = function() {
+      //correct answer
+      document.getElementById("q3Container").setAttribute("style", "display:none;");
+      document.getElementById("q4Container").setAttribute("style", "display:block;");
+    };
+
+    document.getElementById("Question4NO").onclick = function() {
+      //correct answer
+      document.getElementById("q4Container").setAttribute("style", "display:none;");
+      document.getElementById("q5Container").setAttribute("style", "display:block;");
+    };
+
+    document.getElementById("Question4YES").onclick = function() {
+      score-=question4Weight;
+      document.getElementById("q4Container").setAttribute("style", "display:none;");
+      document.getElementById("q5Container").setAttribute("style", "display:block;");
+      document.getElementById("score").innerHTML = score;
+    };
+
+    document.getElementById("Question5NO").onclick = function() {
+      score-=question5Weight;
+      document.getElementById("q5Container").setAttribute("style", "display:hide;");
+      document.getElementById("score").innerHTML = score;
+      document.getElementById("scoreCard").setAttribute("style", "display:block;");
+      showExplanation(score);
+      //Showing final score here with explanation.
+    };
+
+    document.getElementById("Question5YES").onclick = function() {
+      //correct answer
+      document.getElementById("q5Container").setAttribute("style", "display:none;");
+      document.getElementById("scoreCard").setAttribute("style", "display:block;");
+      showExplanation(score);
+      //Showing final score here with explanation
+    };
+
+    function showExplanation(score) {
+      // Returns string of score explanation based on ScoreNumber
+      // Also changes the color of the score number
+
+      if (score === 100) {
+        document.getElementById("Explanation").innerHTML = "Great result! However, of course this isn’t Risk Vetting of all the contributing factors that lead to foodborne disease outbreaks. To ensure your business is managing all of the risk associated with food production across your enterprise, we recommend that you start with a Gap Assessment of your food safety management program today. Schedule a call to learn more!";
+        document.getElementById("score").setAttribute("style", "color:green;");
+      } else if (score >= 70) {
+        document.getElementById("Explanation").innerHTML = "This can be concerning if any of these contributing factors exist in your enterprise (which may include lack of these controls), and your products could already be causing sporadic (non-outbreak associated) foodborne illnesses. However, this isn’t Risk Vetting of all the contributing factors that lead to foodborne illnesses and disease outbreaks. To ensure your business is managing all of the risk associated with food production across your enterprise, we recommend that you start with a Gap Assessment of your food safety management program today. Schedule a call to learn more!";
+        document.getElementById("score").setAttribute("style", "color:orange;");
+      } else {
+        document.getElementById("Explanation").innerHTML = "Your enterprise may have significant risk of causing a foodborne disease outbreak, and may certainly be causing sporadic (non-outbreak associated) foodborne illnesses due to your products if any of these contributing factors actually exist in your business (which may include lack of these controls).  However, this isn’t Risk Vetting of all the contributing factors that that lead to foodborne illnesses and disease outbreaks. To ensure your business is managing all of the risk associated with food production across your enterprise, we recommend that you start with a Gap Assessment of your food safety management program today. Schedule a call to learn more!";
+        document.getElementById("score").setAttribute("style", "color:red;");
+      }
+    };
+
+    // Things to do:
+    // It looks as good as it is going to get on mobile. Could check device size and shrink text based on that but...yea.
+    // Create the second assessment
+
+
+    </script>
+
+  </body>
+</html>
