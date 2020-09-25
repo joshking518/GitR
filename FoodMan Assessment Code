@@ -67,7 +67,7 @@
 
       .scoreEx {
         font-family: Inter;
-        font-size: 25px;
+        font-size: 5px;
         color: Black;
         line-height: 1.5;
       }
