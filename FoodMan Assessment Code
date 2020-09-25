@@ -67,7 +67,7 @@
 
       .scoreEx {
         font-family: Inter;
-        font-size: 40px;
+        font-size: 10px;
         color: Black;
         line-height: 1.5;
       }
@@ -99,7 +99,7 @@
       <h1 id="QuestionTitle" class="QTitle">Question 1</h1>
       <p id="QuestionText" class="QText">
 
-        Have your buyers (distributors, foodservice or sales, or direct to customers) had two or more complaints about the same product you manufacture from the same lot/batch/production date  (many being posted on social media about your product if your buyer does not track) that might include illness (e.g.,  “made me sick” or “tasted spoiled/old”), allergy (e.g., “didn’t know your product had sesame seeds in it”) or injury (e.g., “bit into the sandwich and found a piece of metal” )?
+        TESTING Have your buyers (distributors, foodservice or sales, or direct to customers) had two or more complaints about the same product you manufacture from the same lot/batch/production date  (many being posted on social media about your product if your buyer does not track) that might include illness (e.g.,  “made me sick” or “tasted spoiled/old”), allergy (e.g., “didn’t know your product had sesame seeds in it”) or injury (e.g., “bit into the sandwich and found a piece of metal” )?
 
       </p>
       <button id="Question1YES" type="button">Yes</button>
